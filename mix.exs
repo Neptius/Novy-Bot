@@ -25,7 +25,8 @@ defmodule NovyBot.MixProject do
       # Discord interfacing
       {:nostrum, github: "Kraigie/nostrum", override: true},
       {:nosedrum, github: "jchristgit/nosedrum", override: true},
-      {:req, "~> 0.5.0"}
+      {:req, "~> 0.5.0"},
+      {:absinthe_client, "~> 0.1.0"}
     ]
   end
 end
