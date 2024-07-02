@@ -26,7 +26,11 @@ defmodule NovyBot.MixProject do
       # Discord interfacing
       {:nostrum, github: "Kraigie/nostrum", override: true},
       {:nosedrum, github: "jchristgit/nosedrum", override: true},
-      {:absinthe_client, "~> 0.1.0"}
+      # HTTP client
+      {:absinthe_client, "~> 0.1.0"},
+      # Database
+      {:ecto_sql, "~> 3.0"},
+      {:postgrex, ">= 0.0.0"}
     ]
   end
 

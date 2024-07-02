@@ -1,4 +1,4 @@
-defmodule NovyBot.Dota.Queries.GetPlayers do
+defmodule NovyBot.Dota.Queries.GetPlayer do
   @moduledoc """
   Methods for getting heroes from the OpenDota API.
   """
@@ -10,10 +10,10 @@ defmodule NovyBot.Dota.Queries.GetPlayers do
 
   ## Examples
 
-        iex> GetPlayers.call(135612089)
+        iex> GetPlayer.call(135612089)
         {:ok, "Neptius"}
 
-        iex> GetPlayers.call(0)
+        iex> GetPlayer.call(0)
         {:error, "Player not found"}
 
   """

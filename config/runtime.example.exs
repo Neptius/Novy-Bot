@@ -9,7 +9,16 @@ config :novy_bot,
   ]
 
 # Ensure you've set an environment variable called DISCORD_TOKEN with the discord api token you want to use
-config :nostrum, token: ""
+config :nostrum,
+  token: "",
+  ffmpeg: nil
+
+config :novy_bot, NovyBot.Repo,
+  database: "novy_bot_repo",
+  username: "user",
+  password: "pass",
+  hostname: "localhost"
+
 
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

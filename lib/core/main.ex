@@ -4,6 +4,7 @@ defmodule NovyBot.Core.Main do
   # Entry Point of the program, defined by application/1 in mix.exs
   def start(_type, _args) do
     children = [
+      NovyBot.Repo,
       Nosedrum.Storage.Dispatcher,
       NovyBot.Core.CommandHandler,
       NovyBot.Gateway.Handler
