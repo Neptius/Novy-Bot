@@ -7,6 +7,7 @@ defmodule NovyBot.MixProject do
       version: "0.1.0",
       elixir: "~> 1.17",
       start_permanent: Mix.env() == :prod,
+      aliases: aliases(),
       deps: deps()
     ]
   end
@@ -25,8 +26,11 @@ defmodule NovyBot.MixProject do
       # Discord interfacing
       {:nostrum, github: "Kraigie/nostrum", override: true},
       {:nosedrum, github: "jchristgit/nosedrum", override: true},
-      {:req, "~> 0.5.0"},
       {:absinthe_client, "~> 0.1.0"}
     ]
+  end
+
+  defp aliases do
+    []
   end
 end
