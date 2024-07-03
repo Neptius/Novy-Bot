@@ -1,6 +1,5 @@
 defmodule NovyBot.Commands.Auth.ValidSteam do
   require Logger
-
   alias NovyBot.UserDiscordSteamLink
 
   @behaviour Nosedrum.ApplicationCommand
@@ -11,40 +10,41 @@ defmodule NovyBot.Commands.Auth.ValidSteam do
   def description(), do: "Valide ton compte Steam."
 
   @impl true
+  def type(), do: :slash
+
+  @impl true
   def command(interaction) do
-    [%{name: "token", value: token}] = interaction.data.options
     discord_guild_id = interaction.guild_id
     discord_id = interaction.user.id
+    username = interaction.user.global_name
 
-    # On vérifie que le token est bien présent dans la base de données
-    case UserDiscordSteamLink.get_link_by_token_and_guild_and_discord_id(token, discord_guild_id, discord_id) do
-      %UserDiscordSteamLink{} = link ->
-        # On met à jour le lien pour le valider
-        # UserDiscordSteamLink.validate_link(link)
+    # Vérifier la présence du lien dans la base de données
+    with %UserDiscordSteamLink{} = link <-
+           UserDiscordSteamLink.get_link_by_guild_id_and_discord_id(discord_guild_id, discord_id),
+         {:ok, %Req.Response{body: body}} <-
+           Req.get("https://steamcommunity.com/profiles/#{link.steam_64_id}"),
+         {:ok, document} <- Floki.parse_document(body) do
+      token = document |> Floki.find("div.profile_summary") |> Floki.text() |> String.trim()
+
+      if token == link.token do
+        UserDiscordSteamLink.validate_link(link)
+
         [
-          content: "Ton compte Steam a bien été validé.",
+          content: "Ton compte Steam a bien été validé #{username}.",
           ephemeral?: true
         ]
-      nil ->
+      else
         [
           content: "Le token n'est pas valide.",
           ephemeral?: true
         ]
+      end
+    else
+      _ ->
+        [
+          content: "Le token n'est pas valide ou l'URL de ton profil Steam n'est pas valide.",
+          ephemeral?: true
+        ]
     end
   end
-
-  @impl true
-  def options() do
-    [
-      %{
-        type: :string,
-        name: "token",
-        description: "Token de validation présent sur ton profil Steam.",
-        required: true
-      }
-    ]
-  end
-
-  @impl true
-  def type(), do: :slash
 end

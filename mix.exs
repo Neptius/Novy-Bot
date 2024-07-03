@@ -30,6 +30,7 @@ defmodule NovyBot.MixProject do
       {:absinthe_client, "~> 0.1.0"},
       # DOM
       {:floki, "~> 0.36.0"},
+      {:html5ever, "~> 0.16.1"},
       # Database
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"}
