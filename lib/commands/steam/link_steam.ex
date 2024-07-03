@@ -30,7 +30,7 @@ defmodule NovyBot.Commands.Auth.LinkSteam do
 
         [
           content:
-            "Hey #{username}, pour lier ton compte Steam, va sur ton profil Steam et ajoute le token suivant à ton résumé: #{token}",
+            "Hey #{username}, pour lier ton compte Steam, va sur ton profil Steam et ajoute le token suivant à ton résumé:\n`#{token}`\nensuite attend une petite minute puis execute la commande `/valid_steam`.",
           ephemeral?: true
         ]
       else

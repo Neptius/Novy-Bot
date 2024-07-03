@@ -27,6 +27,9 @@ defmodule NovyBot.Commands.Auth.ValidSteam do
          {:ok, document} <- Floki.parse_document(body) do
       token = document |> Floki.find("div.profile_summary") |> Floki.text() |> String.trim()
 
+      IO.inspect(token)
+      IO.inspect(link.token)
+
       if token == link.token do
         UserDiscordSteamLink.validate_link(link)
 

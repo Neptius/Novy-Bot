@@ -2,6 +2,7 @@ import Config
 
 config :novy_bot,
   stratz_token: "",
+  xivapi_token: "",
   guild_ids: [
     # One or more server ids, comma separated
     # Leave empty to register commands globally
