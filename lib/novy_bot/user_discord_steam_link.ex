@@ -85,6 +85,17 @@ defmodule NovyBot.UserDiscordSteamLink do
     )
   end
 
+  def get_valid_link_by_guild_id_and_discord_id(discord_guild_id, discord_id) do
+    Repo.one(
+      from(
+        l in UserDiscordSteamLink,
+        where: l.discord_guild_id == ^discord_guild_id,
+        where: l.discord_id == ^discord_id,
+        where: is_nil(l.validated_at) == false
+      )
+    )
+  end
+
   def validate_link(link) do
     link
     |> UserDiscordSteamLink.changeset(%{validated_at: DateTime.utc_now()})

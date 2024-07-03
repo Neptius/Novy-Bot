@@ -1,7 +1,9 @@
 defmodule NovyBot.Commands.Dota.Player do
   require Logger
+
   @behaviour Nosedrum.ApplicationCommand
 
+  alias NovyBot.UserDiscordSteamLink
   alias NovyBot.Dota.Queries.GetPlayer
 
   def name(), do: "playername"
@@ -11,26 +13,30 @@ defmodule NovyBot.Commands.Dota.Player do
 
   @impl true
   def command(interaction) do
-    [%{name: "steam32id", value: steam32id}] = interaction.data.options
+    discord_guild_id = interaction.guild_id
+    discord_id = interaction.user.id
 
-    case GetPlayer.call(steam32id) do
-      {:ok, name} ->
-        [content: name]
-      {:error, _} ->
-        [content: "Player not found"]
+    case UserDiscordSteamLink.get_valid_link_by_guild_id_and_discord_id(
+           discord_guild_id,
+           discord_id
+         ) do
+      nil ->
+        [
+          content: "You need to link your Steam account first.",
+          ephemeral?: true
+        ]
+
+      link ->
+        steam32id = link.steam_32_id
+
+        case GetPlayer.call(steam32id) do
+          {:ok, name} ->
+            [content: name]
+
+          {:error, _} ->
+            [content: "Player not found"]
+        end
     end
-  end
-
-  @impl true
-  def options() do
-    [
-      %{
-        type: :string,
-        name: "steam32id",
-        description: "DERP",
-        required: true
-      }
-    ]
   end
 
   @impl true

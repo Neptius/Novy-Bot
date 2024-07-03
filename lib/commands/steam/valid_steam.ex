@@ -1,5 +1,6 @@
 defmodule NovyBot.Commands.Auth.ValidSteam do
   require Logger
+
   alias NovyBot.UserDiscordSteamLink
 
   @behaviour Nosedrum.ApplicationCommand
