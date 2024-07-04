@@ -1,4 +1,4 @@
-defmodule NovyBot.Commands.Auth.LinkSteam do
+defmodule NovyBot.DCommands.Auth.LinkSteam do
   require Logger
 
   @behaviour Nosedrum.ApplicationCommand

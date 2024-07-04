@@ -1,4 +1,4 @@
-defmodule NovyBot.Commands.SubcommandExample.Subcommands.Greeting do
+defmodule NovyBot.DCommands.SubcommandExample.Subcommands.Greeting do
   # Because this command had an optional second argument, we need to pattern match to extract that argument
   # This helper module does that, rather than cluttering up the discord command
 

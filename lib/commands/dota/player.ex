@@ -1,4 +1,4 @@
-defmodule NovyBot.Commands.Dota.Player do
+defmodule NovyBot.DCommands.Dota.Player do
   require Logger
 
   @behaviour Nosedrum.ApplicationCommand

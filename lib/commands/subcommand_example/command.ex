@@ -1,4 +1,4 @@
-defmodule NovyBot.Commands.SubcommandExample.Command do
+defmodule NovyBot.DCommands.SubcommandExample.Command do
   @behaviour Nosedrum.ApplicationCommand
 
   alias NovyBot.Commands.SubcommandExample.Subcommands.Greeting, as: Greeting

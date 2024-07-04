@@ -1,4 +1,4 @@
-defmodule NovyBot.Core.ApplicationCommandLoader do
+defmodule NovyBot.CommandHandler do
   require Logger
 
   alias Nosedrum.Storage.Dispatcher

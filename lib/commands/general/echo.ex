@@ -1,4 +1,4 @@
-defmodule NovyBot.Commands.General.Echo do
+defmodule NovyBot.DCommands.General.Echo do
   @behaviour Nosedrum.ApplicationCommand
 
   def name() do

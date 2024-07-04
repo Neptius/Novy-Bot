@@ -16,7 +16,7 @@ defmodule NovyBot.MixProject do
   def application do
     [
       extra_applications: [:logger],
-      mod: {NovyBot.Core.Main, []}
+      mod: {NovyBot.Application, []}
     ]
   end
 

@@ -1,4 +1,4 @@
-defmodule NovyBot.Commands.Fun.EightBall do
+defmodule NovyBot.DCommands.Fun.EightBall do
   require Logger
   @behaviour Nosedrum.ApplicationCommand
   @responses [

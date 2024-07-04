@@ -1,4 +1,4 @@
-defmodule NovyBot.Commands.General.Ping do
+defmodule NovyBot.DCommands.General.Ping do
   require Logger
   @behaviour Nosedrum.ApplicationCommand
 
