@@ -1,14 +1,14 @@
 defmodule NovyBot.GatewayHandler do
-  use Nostrum.Consumer
   require Logger
 
-  alias NovyBot.Gateway.Events.{}
+  use Nostrum.Consumer
+
   alias NovyBot.Dispatcher
+  alias NovyBot.CommandHandler
 
+  def handle_event({:READY, _event, _ws_state}), do: CommandHandler.load_all_command()
+  def handle_event({:INTERACTION_CREATE, interaction, _ws_state}),
+    do: Dispatcher.handle_interaction(interaction)
 
-  # MessageCreate
-  @spec handle_event(Nostrum.Consumer.event()) :: any()
-  # def handle_event({:MESSAGE_CREATE, msg, _ws_state}), do: MessageCreate.handle(msg)
-  def handle_event({:INTERACTION_CREATE, interaction, _}), do: Dispatcher.handle_interaction(interaction)
   def handle_event(_), do: :noop
 end

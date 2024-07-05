@@ -5,16 +5,18 @@ defmodule NovyBot.Commands.Ping do
 
   require Logger
 
-  def command do
-    %{
-      name: "ping",
-      description: "Répond avec Pong!",
-      options: []
-    }
-  end
+  def name(), do: "ping"
 
-  def callback(%Nostrum.Struct.Interaction{data: data} = interaction) do
-    Logger.info("Commande Ping appelée")
-    Nostrum.Api.create_interaction_response(interaction.id, interaction.token, %{type: 4, data: %{content: "Pong!"}})
+  def description(), do: "Répond avec Pong!"
+
+  def type(), do: :slash
+
+  def options(), do: []
+
+  def execute(_interaction) do
+    [
+      content: "Pong!",
+      type: :pong
+    ]
   end
 end
