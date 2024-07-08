@@ -33,7 +33,8 @@ defmodule NovyBot.MixProject do
       {:html5ever, "~> 0.16.1"},
       # Database
       {:ecto_sql, "~> 3.0"},
-      {:postgrex, ">= 0.0.0"}
+      {:postgrex, ">= 0.0.0"},
+      {:redix, "~> 1.5"},
     ]
   end
 
