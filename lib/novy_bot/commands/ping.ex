@@ -2,8 +2,9 @@ defmodule NovyBot.Commands.Ping do
   @moduledoc """
   Module pour la commande Ping.
   """
-
   require Logger
+
+  @behaviour NovyBot.Command
 
   def name(), do: "ping"
 
@@ -16,7 +17,7 @@ defmodule NovyBot.Commands.Ping do
   def execute(_interaction) do
     [
       content: "Pong!",
-      type: :pong
+      ephemeral: true
     ]
   end
 end

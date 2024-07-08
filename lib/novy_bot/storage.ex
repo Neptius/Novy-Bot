@@ -1,18 +1,22 @@
 defmodule NovyBot.Storage do
+  # TODO: IMPLEMENTER LA GESTION DES TYPES DE CALLBACKS
   @callback_type_map %{
     pong: 1,
     channel_message_with_source: 4,
     deferred_channel_message_with_source: 5,
     deferred_update_message: 6,
-    update_message: 7
+    update_message: 7,
+    application_command_autocomplete_result: 8,
+    modal: 9
   }
 
   @flag_map %{
-    ephemeral?: 64
+    ephemeral: 64
   }
 
+  # https://discord.com/developers/docs/interactions/receiving-and-responding#responding-to-an-interaction
+
   def respond(interaction, command_response) do
-    IO.inspect(command_response)
     type =
       command_response
       |> Keyword.get(:type, :channel_message_with_source)
@@ -20,7 +24,16 @@ defmodule NovyBot.Storage do
 
     data =
       command_response
-      |> Keyword.take([:content, :embeds, :components, :tts?, :allowed_mentions])
+      |> Keyword.take([
+        :tts,
+        :content,
+        :embeds,
+        :allowed_mentions,
+        # :flags,
+        :components,
+        :attachements,
+        :poll
+      ])
       |> Map.new()
       |> put_flags(command_response)
 
