@@ -28,6 +28,9 @@ defmodule NovyBot.MixProject do
       {:nosedrum, github: "jchristgit/nosedrum", override: true},
       # HTTP client
       {:absinthe_client, "~> 0.1.0"},
+      {:oauth2, "~> 2.0"},
+      {:joken, "~> 2.6"},
+      {:jason, "~> 1.4"},
       # DOM
       {:floki, "~> 0.36.0"},
       {:html5ever, "~> 0.16.1"},
@@ -35,6 +38,11 @@ defmodule NovyBot.MixProject do
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
       {:redix, "~> 1.5"},
+
+      {:nebulex, "~> 2.6"},
+      {:shards, "~> 1.1"},
+      {:decorator, "~> 1.4"},
+      {:telemetry, "~> 1.0"}
     ]
   end
 

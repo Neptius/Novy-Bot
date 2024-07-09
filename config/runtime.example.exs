@@ -3,6 +3,8 @@ import Config
 config :novy_bot,
   stratz_token: "",
   xivapi_token: "",
+  fflogs_client_id: "",
+  fflogs_client_secret: "",
   guild_ids: [
     # One or more server ids, comma separated
     # Leave empty to register commands globally

@@ -9,6 +9,8 @@ defmodule NovyBot.Application do
 
       NovyBot.Dispatcher,
       NovyBot.GatewayHandler,
+
+      NovyBot.Api.TokenStorage,
     ]
 
     options = [strategy: :one_for_one, name: NovyBot.Supervisor]

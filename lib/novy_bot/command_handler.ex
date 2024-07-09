@@ -36,7 +36,7 @@ defmodule NovyBot.CommandHandler do
   defp queue_all_commands(commands) do
     Enum.each(commands, fn command ->
       Dispatcher.add_command(command.name(), command)
-      IO.inspect("Added module #{command} as command /#{command.name()}")
+      IO.inspect("Added command /#{command.name()}")
     end)
   end
 
