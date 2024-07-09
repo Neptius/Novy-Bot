@@ -16,6 +16,7 @@ defmodule NovyBot.Api.Ffxiv.Fflogs.Client do
     case TokenStorage.fetch_token() do
       {:ok, %OAuth2.AccessToken{} = token} ->
         IO.inspect(token.expires_at)
+
         if token.expires_at > System.system_time(:second) do
           IO.inspect("Token still valid")
           token
@@ -25,6 +26,7 @@ defmodule NovyBot.Api.Ffxiv.Fflogs.Client do
           TokenStorage.store_token(new_token)
           new_token
         end
+
       :error ->
         IO.inspect("No token found")
         new_token = fetch_new_token()

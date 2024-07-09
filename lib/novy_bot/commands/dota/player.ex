@@ -11,7 +11,7 @@ defmodule NovyBot.Commands.Dota.Player do
 
   def execute(_interaction) do
     [
-      content: "Pong!",
+      content: "Pong!"
     ]
   end
 end

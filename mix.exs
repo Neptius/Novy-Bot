@@ -38,7 +38,6 @@ defmodule NovyBot.MixProject do
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
       {:redix, "~> 1.5"},
-
       {:nebulex, "~> 2.6"},
       {:shards, "~> 1.1"},
       {:decorator, "~> 1.4"},

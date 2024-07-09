@@ -25,7 +25,6 @@ defmodule NovyBot.DCommands.Auth.LinkSteam do
            steam_32_id <- get_steam_32_id(document),
            steam_64_id = steam_32_id + 76_561_197_960_265_728,
            token = generate_token() do
-
         upsert_steam_link(discord_guild_id, discord_id, steam_32_id, steam_64_id, token)
 
         [

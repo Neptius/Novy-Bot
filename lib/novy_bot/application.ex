@@ -6,11 +6,9 @@ defmodule NovyBot.Application do
     children = [
       NovyBot.Repo,
       {Redix, name: :redix},
-
       NovyBot.Dispatcher,
       NovyBot.GatewayHandler,
-
-      NovyBot.Api.TokenStorage,
+      NovyBot.Api.TokenStorage
     ]
 
     options = [strategy: :one_for_one, name: NovyBot.Supervisor]

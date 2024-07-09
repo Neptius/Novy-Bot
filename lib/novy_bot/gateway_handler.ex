@@ -7,6 +7,7 @@ defmodule NovyBot.GatewayHandler do
   alias NovyBot.CommandHandler
 
   def handle_event({:READY, _event, _ws_state}), do: CommandHandler.load_all_command()
+
   def handle_event({:INTERACTION_CREATE, interaction, _ws_state}),
     do: Dispatcher.handle_interaction(interaction)
 

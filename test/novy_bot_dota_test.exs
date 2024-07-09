@@ -4,7 +4,7 @@ defmodule NovyBotTest.Dota do
 
   describe "Test de la récupération du joueur" do
     test "Récupére le nom du joueur par un Steam32ID valide" do
-      assert {:ok, "Neptius"} = GetPlayer.call(135612089)
+      assert {:ok, "Neptius"} = GetPlayer.call(135_612_089)
     end
 
     test "Récupère le nom du joueur par un Steam32ID invalide" do

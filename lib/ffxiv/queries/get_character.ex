@@ -20,10 +20,11 @@ defmodule NovyBot.FFXIV.Queries.GetCharacter do
   @spec call(lodestone_id :: integer) :: {:ok, String.t()} | {:error, String.t()}
   def call(lodestone_id) do
     # https://lalachievements.com/api/charrealtime/20753490
-     case HttpClient.get("/characters/#{lodestone_id}/titles/owned?limit=2") do
+    case HttpClient.get("/characters/#{lodestone_id}/titles/owned?limit=2") do
       # case HttpClient.get("/titles?limit=2") do
       {:ok, data} ->
         {:ok, data}
+
       {:error, _} ->
         {:error, "Error fetching player"}
     end

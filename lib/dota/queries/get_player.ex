@@ -29,6 +29,7 @@ defmodule NovyBot.Dota.Queries.GetPlayer do
   @spec get_from_cache(steam32Id :: integer) :: {:ok, String.t()} | :not_found
   defp get_from_cache(steam32Id) do
     IO.inspect("Getting player from cache")
+
     case Cache.get("player:#{steam32Id}") do
       {:ok, nil} -> :not_found
       {:ok, name} -> {:ok, name}
@@ -39,6 +40,7 @@ defmodule NovyBot.Dota.Queries.GetPlayer do
   @spec fetch_and_cache(steam32Id :: integer) :: {:ok, String.t()} | {:error, String.t()}
   defp fetch_and_cache(steam32Id) do
     IO.inspect("Fetching player")
+
     query = """
       query {
         player(steamAccountId: #{steam32Id}) {
@@ -50,11 +52,13 @@ defmodule NovyBot.Dota.Queries.GetPlayer do
     """
 
     case GraphqlClient.post(query) do
-      {:ok, %{"player" => %{"steamAccount" => %{"name" => name }}}} ->
+      {:ok, %{"player" => %{"steamAccount" => %{"name" => name}}}} ->
         Cache.put("player:#{steam32Id}", name, 30)
         {:ok, name}
+
       {:ok, %{"player" => nil}} ->
         {:error, "Player not found"}
+
       {:error, _} ->
         {:error, "Error fetching player"}
     end
