@@ -1,6 +1,6 @@
 defmodule NovyBotTest.Dota do
   use ExUnit.Case, async: true
-  alias NovyBot.Dota.Queries.GetPlayer
+  alias NovyBot.Api.Dota.Stratz.GetPlayer
 
   describe "Test de la récupération du joueur" do
     test "Récupére le nom du joueur par un Steam32ID valide" do

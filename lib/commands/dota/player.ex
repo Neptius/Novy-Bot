@@ -4,7 +4,7 @@ defmodule NovyBot.DCommands.Dota.Player do
   @behaviour Nosedrum.ApplicationCommand
 
   alias NovyBot.UserDiscordSteamLink
-  alias NovyBot.Dota.Queries.GetPlayer
+  alias NovyBot.Api.Dota.Stratz.GetPlayer
 
   def name(), do: "playername"
 

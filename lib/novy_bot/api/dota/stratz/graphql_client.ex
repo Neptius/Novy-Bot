@@ -1,4 +1,4 @@
-defmodule NovyBot.Dota.GraphqlClient do
+defmodule NovyBot.Api.Dota.Stratz.GraphqlClient do
   @moduledoc """
   Client for the Stratz API
   """
