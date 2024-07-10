@@ -5,7 +5,9 @@ defmodule NovyBot.Application do
   def start(_type, _args) do
     children = [
       NovyBot.Repo,
-      {Redix, name: :redix},
+
+      NovyBot.Cache,
+
       NovyBot.Dispatcher,
       NovyBot.GatewayHandler,
       NovyBot.Api.TokenStorage

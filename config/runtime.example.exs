@@ -22,10 +22,6 @@ config :novy_bot, NovyBot.Repo,
   password: "pass",
   hostname: "localhost"
 
-config :novy_bot, :redix,
-  host: "localhost",
-  port: 6379
-
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   level: :info
