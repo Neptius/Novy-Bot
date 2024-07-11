@@ -3,17 +3,12 @@ defmodule NovyBot.DCommands.Auth.ValidSteam do
 
   alias NovyBot.UserDiscordSteamLink
 
-  @behaviour Nosedrum.ApplicationCommand
-
   def name(), do: "valid_steam"
 
-  @impl true
   def description(), do: "Valide ton compte Steam."
 
-  @impl true
   def type(), do: :slash
 
-  @impl true
   def command(interaction) do
     discord_guild_id = interaction.guild_id
     discord_id = interaction.user.id

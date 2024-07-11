@@ -41,8 +41,8 @@ defmodule NovyBot.Api.FFXIV.FFlog.Wol do
       {:ok, %{"player" => nil}} ->
         {:error, "Player not found"}
 
-      {:error, _} ->
-        {:error, "Error fetching player"}
+      {:error, message} ->
+        {:error, message}
     end
   end
 end

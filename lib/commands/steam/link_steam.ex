@@ -1,17 +1,12 @@
 defmodule NovyBot.DCommands.Auth.LinkSteam do
   require Logger
 
-  @behaviour Nosedrum.ApplicationCommand
-
   def name(), do: "link_steam"
 
-  @impl true
   def description(), do: "Lie un compte Steam à ton compte Discord."
 
-  @impl true
   def type(), do: :slash
 
-  @impl true
   def command(interaction) do
     [%{name: "url_profile_steam", value: url_profile_steam}] = interaction.data.options
 
@@ -75,7 +70,6 @@ defmodule NovyBot.DCommands.Auth.LinkSteam do
     })
   end
 
-  @impl true
   def options() do
     [
       %{

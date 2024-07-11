@@ -1,9 +1,7 @@
 defmodule NovyBot.Api.FFXIV.FFlog.Client do
-  @behaviour OAuth2.Strategy
-
   alias NovyBot.Cache
 
-  def client do
+  defp client do
     OAuth2.Client.new(
       strategy: OAuth2.Strategy.ClientCredentials,
       client_id: Application.get_env(:novy_bot, :fflogs_client_id),
@@ -41,22 +39,26 @@ defmodule NovyBot.Api.FFXIV.FFlog.Client do
     Cache.put("fflogs_token", token, ttl: :timer.minutes(43_800))
   end
 
-  # GRAPHQL
   def post(graphql) do
+    base_url = "https://www.fflogs.com/api/v2"
     token = get_token()
-    base_url = "https://www.fflogs.com/api/v2/client"
-    auth = {:bearer, token}
 
-    Req.new(base_url: base_url, auth: auth)
-    |> AbsintheClient.attach()
-    |> Req.post(graphql: graphql)
+    body = Jason.encode!(%{query: graphql})
+
+    headers = [
+      {"Content-Type", "application/json"},
+      {"Accept", "application/json"},
+      {"Authorization", "Bearer #{token}"}
+    ]
+
+    Req.post(base_url, body: body, headers: headers)
     |> handle_response()
   end
 
   defp handle_response({:ok, %Req.Response{status: 200, body: %{"data" => data}}}),
     do: {:ok, data}
 
-  defp handle_response({:ok, %Req.Response{status: 404, body: %{body: %{"message" => message}}}}),
+  defp handle_response({:ok, %Req.Response{status: 404, body: %{"message" => message}}}),
     do: {:error, message}
 
   defp handle_response({:error, reason}) do
