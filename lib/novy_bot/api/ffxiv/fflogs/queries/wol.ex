@@ -29,14 +29,15 @@ defmodule NovyBot.Api.FFXIV.FFlog.Wol do
         characterData {
           character(id: #{fflog_id}) {
             name
+            zoneRankings
           }
         }
       }
     """
 
     case Client.post(query) do
-      {:ok, %{"characterData" => %{"character" => %{"name" => name}}}} ->
-        {:ok, name}
+      {:ok, %{"characterData" => %{"character" => data}}} ->
+        {:ok, data}
 
       {:ok, %{"player" => nil}} ->
         {:error, "Player not found"}
