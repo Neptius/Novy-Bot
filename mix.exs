@@ -23,20 +23,24 @@ defmodule NovyBot.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      # Discord interfacing
+      # Discord
       {:nostrum, github: "Kraigie/nostrum", override: true},
-      {:nosedrum, github: "jchristgit/nosedrum", override: true},
-      # HTTP client
+
+      # HTTP
       {:absinthe_client, "~> 0.1.0"},
       {:oauth2, "~> 2.0"},
       {:joken, "~> 2.6"},
       {:jason, "~> 1.4"},
+
       # DOM
       {:floki, "~> 0.36.0"},
       {:html5ever, "~> 0.16.1"},
+
       # Database
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
+
+      # Cache
       {:nebulex, "~> 2.6"},
       {:shards, "~> 1.1"},
       {:decorator, "~> 1.4"},
