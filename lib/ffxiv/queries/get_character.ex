@@ -10,10 +10,10 @@ defmodule NovyBot.FFXIV.Queries.GetCharacter do
 
   ## Examples
 
-        iex> GetCharacter.call(20753490)
+        iex> NovyBot.FFXIV.Queries.GetCharacter.call(20753490)
         {:ok, "Neptius"}
 
-        iex> GetCharacter.call(0)
+        iex> NovyBot.FFXIV.Queries.GetCharacter.call(0)
         {:error, "Player not found"}
 
   """

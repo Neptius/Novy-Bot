@@ -1,4 +1,4 @@
-defmodule NovyBot.DCommands.Auth.LinkSteam do
+defmodule NovyBot.Commands.Steam.Link do
   require Logger
 
   def name(), do: "link_steam"

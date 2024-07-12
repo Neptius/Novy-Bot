@@ -1,4 +1,4 @@
-defmodule NovyBot.DCommands.Auth.ValidSteam do
+defmodule NovyBot.Commands.Steam.Valid do
   require Logger
 
   alias NovyBot.UserDiscordSteamLink
