@@ -7,6 +7,17 @@ defmodule NovyBot.Commands.Steam.Link do
 
   def type(), do: :slash
 
+  def options() do
+    [
+      %{
+        type: :string,
+        name: "url_profile_steam",
+        description: "Url de ton profil Steam.",
+        required: true
+      }
+    ]
+  end
+
   def command(interaction) do
     [%{name: "url_profile_steam", value: url_profile_steam}] = interaction.data.options
 
@@ -68,16 +79,5 @@ defmodule NovyBot.Commands.Steam.Link do
       token: token,
       validated_at: nil
     })
-  end
-
-  def options() do
-    [
-      %{
-        type: :string,
-        name: "url_profile_steam",
-        description: "Url de ton profil Steam.",
-        required: true
-      }
-    ]
   end
 end

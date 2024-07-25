@@ -1,12 +1,8 @@
 defmodule NovyBot.Commands.FFXIV.Wol do
   require Logger
 
-  alias NovyBot.Api.FFXIV.FFlog.Wol
-
-  @rank_colors %{
-    100 => 0xE4CA7C,
-    99 => 0xE26BA9,
-  }
+  # alias NovyBot.Api.FFXIV.FFlog.Wol
+  alias NovyBot.Api.FFXIV.Tomestone.Wol
 
   def name(), do: "wol"
 
@@ -14,10 +10,19 @@ defmodule NovyBot.Commands.FFXIV.Wol do
 
   def type(), do: :slash
 
-  def options(), do: []
+  def options(), do: [
+    %{
+      type: :integer,
+      name: "lodestone_id",
+      description: "[TEMP] ID Lodestone de votre personnage.",
+      required: true
+    }
+  ]
 
-  def execute(_interaction) do
-    case Wol.call(12673432) do
+  def execute(interaction) do
+    [%{name: "lodestone_id", value: lodestone_id}] = interaction.data.options
+
+    case Wol.call(lodestone_id) do
       {:ok, data} ->
         IO.inspect(data)
         [
@@ -87,8 +92,11 @@ defmodule NovyBot.Commands.FFXIV.Wol do
           ]
         ]
 
-      {:error, error} ->
-        [content: error]
+      {:error, message} ->
+        IO.inspect(message)
+        [
+          content: message
+        ]
     end
   end
 end
