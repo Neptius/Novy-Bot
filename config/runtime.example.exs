@@ -4,6 +4,7 @@ config :novy_bot,
   fflogs_client_id: "",
   fflogs_client_secret: "",
   tomestone_access_token: "",
+  xivapi_access_token: "",
   guild_ids: [
     # One or more server ids, comma separated
     # Leave empty to register commands globally

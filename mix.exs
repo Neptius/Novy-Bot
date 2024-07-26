@@ -44,7 +44,9 @@ defmodule NovyBot.MixProject do
       {:nebulex, "~> 2.6"},
       {:shards, "~> 1.1"},
       {:decorator, "~> 1.4"},
-      {:telemetry, "~> 1.0"}
+      {:telemetry, "~> 1.0"},
+
+      {:lodestone_css_selectors , git: "https://github.com/xivapi/lodestone-css-selectors.git", app: false}
     ]
   end
 
