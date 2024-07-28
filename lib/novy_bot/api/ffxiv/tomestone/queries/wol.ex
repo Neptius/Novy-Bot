@@ -8,7 +8,6 @@ defmodule NovyBot.Api.FFXIV.Tomestone.Wol do
   alias NovyBot.Api.FFXIV.Tomestone.Client
   alias NovyBot.Cache
 
-
   @doc """
   Get a player by their steam account id.
 

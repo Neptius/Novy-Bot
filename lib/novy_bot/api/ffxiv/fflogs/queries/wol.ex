@@ -8,7 +8,6 @@ defmodule NovyBot.Api.FFXIV.FFlog.Wol do
   alias NovyBot.Api.FFXIV.FFlog.Client
   alias NovyBot.Cache
 
-
   @doc """
   Get a player by their steam account id.
 

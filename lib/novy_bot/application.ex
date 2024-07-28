@@ -5,11 +5,9 @@ defmodule NovyBot.Application do
   def start(_type, _args) do
     children = [
       NovyBot.Repo,
-
       NovyBot.Cache,
-
       NovyBot.Dispatcher,
-      NovyBot.GatewayHandler,
+      NovyBot.GatewayHandler
     ]
 
     options = [strategy: :one_for_one, name: NovyBot.Supervisor]
