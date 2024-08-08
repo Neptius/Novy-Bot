@@ -121,7 +121,7 @@ defmodule NovyBot.Extractor.FFXIV.Lodestone.Character do
 
   defp export_to_json(data) do
     case Jason.encode(data) do
-      {:ok, json} -> File.write!("output.json", json)
+      {:ok, json} -> File.write!("character.json", json)
       {:error, reason} -> IO.puts("Erreur lors de l'encodage JSON: #{reason}")
     end
   end
